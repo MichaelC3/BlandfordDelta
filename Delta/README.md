@@ -19,5 +19,10 @@ I will now go into the specifics of building and running Kharma in Delta as well
 
 ### Compiling
 
-Kharma is able to be compiled for both CPUs and GPUs, for our use we will be compiling using GPUs. To begin, we need to first clone the repository and then accomplish any of the prerequisites as described in the Kharma github page. Before actually building Kharma, we need to load some modules necesarry for compiling. 
+Kharma is able to be compiled for both CPUs and GPUs, for our use we will be compiling using GPUs. To begin, we need to first clone the kharma-next branch of the repository and then accomplish any of the prerequisites as described in the Kharma github page. Before actually compiling Kharma, we need to load some modules within Delta. We can use the `module.sh` script contained here. From here we can run the command `./make.sh clean cuda hdf5`
 
+### Running Kharma
+
+Once compiled we can begin running simulations. To do that we must make use of a batch job. For a simulation using the parameter file `parfile.par` this will look like `sbatch ./delta.sb -i ./parfile.par`. It should be noted that you should output dumps, and also future plots, within the directory `/scratch/bbgv/<username>` and not within the login node of your account. Once the job is requested, you are free to leave, exit, get coffee or whatever you want to do, it will run in the background. Should you want to check on the run, you can use the command `squeue -u <yourusername>` to see how long the job has been running or if it is done. For more precise information, e.g. to what time the simulation has so far been run to, the `delta.sb` script also outputs an output file with the name `slurm-<jobid>.out` to the dump directory, this information can be found within it.
+
+If you ever need to cancel a job you can use `scancel <jobid>`.
