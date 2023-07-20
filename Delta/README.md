@@ -15,7 +15,7 @@ NOTE2: There are two types of jobs that you will probably use, normal runs, i.e.
 
 This looks much simpler, but much of the work is being done within the `randomscript.sb` file. Using `delta.sb` as an example, you might notice that there is an `srun` command being used under the hood. For some context, `.sb` scripts can be thought of as shell scripts, they function exactly the same, however, here we issue commands using `#SBATCH`. Again, using `delta.sb` as an example, the script is using these `#SBATCH` commands to clarify the parameters of the job we want to make e.g. `#SBATCH -t 24:00:00` or `#SBATCH --account=bbgv-delta-gpu`. 
 
-It is important to note that if you do anything requires a lot of computational power, i.e. running Kharma, outside of a Slrum job you are eligble to being BANNED. Please do not do this! If you are unsure if whatever you are doing requires that you enter a job, just ask!
+It is important to note that if you do anything requires a lot of computational power, i.e. running Kharma, outside of a Slurm job you are eligble to being BANNED. Please do not do this! If you are unsure if whatever you are doing requires that you enter a job, just ask!
 
 For any more information pertaining to Delta as a whole please look at the Delta user guide [here](https://wiki.ncsa.illinois.edu/display/DSC/Delta+User+Guide).
 
