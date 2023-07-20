@@ -19,7 +19,7 @@ I will now go into the specifics of building and running Kharma in Delta as well
 
 ### Compiling
 
-Kharma is able to be compiled for both CPUs and GPUs, for our use we will be compiling using GPUs. To begin, we need to first clone the kharma-next branch of the repository and then accomplish any of the prerequisites as described in the Kharma github page. Before actually compiling Kharma, we need to load some modules within Delta. We can use the `module.sh` script contained here. From here we can run the command `./make.sh clean cuda hdf5`
+Kharma is able to be compiled for both CPUs and GPUs, for our use we will be compiling using GPUs. To begin, we need to first clone the kharma-next branch of the repository and then accomplish any of the prerequisites as described in the Kharma github page. From here we can run the command `./make.sh clean cuda hdf5`
 
 ### Running Kharma
 
