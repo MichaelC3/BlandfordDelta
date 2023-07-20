@@ -7,7 +7,11 @@ For our use, we will use two Slurm commands for getting into a job. They are `sr
 
 An example use of `srun` would look like this: `srun --account=bbgv-delta-cpu --partition=cpu --nodes=1 --tasks=1 --tasks-per-node=1 --cpus-per-task=8 --mem=16g --time=24:00:00 --pty bas`
 
-In this command, we specify the account that we are using, the partition, how many nodes, tasks, tasks per node, etc. you get the idea. Most of these are pretty self explanatory, but, again, are fully described in the Slurm documentation page. Using something like `sbatch` would instead look like this: `sbatch ./randomscript.sb`. 
+In this command, we specify the account that we are using, the partition, how many nodes, tasks, tasks per node, etc. you get the idea. Most of these are pretty self explanatory, but, again, are fully described in the Slurm documentation page. Using something like `sbatch` would instead look like this: `sbatch ./randomscript.sb`.
+
+NOTE1: Requesting jobs requires that you specify the amount of time you want to use. This time is billed from the groups total allocated node hours on Delta. You can check the total number of hours available with the command `accounts`.
+
+NOTE2: There are ~two~ types of jobs that you will probably use, normal runs, i.e. the one requested above, and interactive jobs which might look like `srun -t 30:00 -A bbgv-delta-gpu -p gpuA100x4-interactive -N 1 --gpus-per-node 1 --tasks-per-node 1 --cpus-per-task 16 --pty bash` - note how we specify an 'interactive' gpu. Interactive jobs, as you might assume, allow you to work within an ~interactive~ workspace. These ineractive jobs eat into twice as much of our total allocated as normal run, so try not to use them very often!
 
 This looks much simpler, but much of the work is being done within the `randomscript.sb` file. Using `delta.sb` as an example, you might notice that there is an `srun` command being used under the hood. For some context, `.sb` scripts can be thought of as shell scripts, they function exactly the same, however, here we issue commands using `#SBATCH`. Again, using `delta.sb` as an example, the script is using these `#SBATCH` commands to clarify the parameters of the job we want to make e.g. `#SBATCH -t 24:00:00` or `#SBATCH --account=bbgv-delta-gpu`. 
 
