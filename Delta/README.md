@@ -5,7 +5,7 @@ Using Kharma, or my own [Kharma_Blandford](https://github.com/MichaelC3/kharma_B
 
 For our use, we will use two Slurm commands for getting into a job. They are `srun` and `sbatch`. The first, is responsible for requesting the run. It takes a variety of options and flags such as number of nodes, number of GPUs per nodes, etc (For more information use the SLURM documentation page found [here](https://slurm.schedmd.com/srun.html)). The second command submits bash scripts to Slurm. This allows us to use scripts like `delta.sb`, contained here, enabling us to run our jobs in the background. 
 
-An example use of `srun` would look like this: `srun --account=bbgv-delta-cpu --partition=cpu --nodes=1 --tasks=1 --tasks-per-node=1 --cpus-per-task=8 --mem=16g --time=24:00:00 --pty bas`
+An example use of `srun` would look like this: `srun --account=bbgv-delta-cpu --partition=cpu --nodes=1 --tasks=1 --tasks-per-node=1 --cpus-per-task=8 --mem=16g --time=24:00:00 --pty bash`
 
 In this command, we specify the account that we are using, the partition, how many nodes, tasks, tasks per node, etc. you get the idea. Most of these are pretty self explanatory, but, again, are fully described in the Slurm documentation page. Using something like `sbatch` would instead look like this: `sbatch ./randomscript.sb`.
 
